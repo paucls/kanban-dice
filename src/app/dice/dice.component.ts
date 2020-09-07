@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { randomIntFromInterval } from '../core/random';
 
 @Component({
   selector: 'app-dice',
-  templateUrl: './dice.component.html',
-  styleUrls: ['./dice.component.scss']
+  templateUrl: './dice.component.html'
 })
-export class DiceComponent implements OnInit {
+export class DiceComponent {
 
   readonly diceSides = [
     { red: 3, blue: 1, green: 2 },
@@ -15,14 +15,6 @@ export class DiceComponent implements OnInit {
     { red: 5, blue: 2, green: 3 },
     { red: 6, blue: 3, green: 1 }
   ];
-  readonly outcome = this.diceSides[this.randomIntFromInterval(0, 5)];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  randomIntFromInterval(min, max): number {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+  readonly outcome = this.diceSides[randomIntFromInterval(0, 5)];
 }
