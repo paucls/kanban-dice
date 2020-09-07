@@ -7,17 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiceComponent implements OnInit {
 
-  red = this.randomIntFromInterval(3, 6);
-  blue = this.randomIntFromInterval(0, 3);
-  green = this.randomIntFromInterval(1, 3);
+  readonly diceSides = [
+    { red: 3, blue: 1, green: 2 },
+    { red: 4, blue: 0, green: 2 },
+    { red: 4, blue: 2, green: 1 },
+    { red: 5, blue: 1, green: 3 },
+    { red: 5, blue: 2, green: 3 },
+    { red: 6, blue: 3, green: 1 }
+  ];
+  readonly outcome = this.diceSides[this.randomIntFromInterval(0, 5)];
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getRandomInt(max): number {
-    return Math.floor(Math.random() * Math.floor(max));
   }
 
   randomIntFromInterval(min, max): number {
