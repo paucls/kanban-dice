@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-import { randomIntFromInterval } from '../core/random';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {randomIntFromInterval} from '../core/random';
 
 @Component({
   selector: 'app-red-dice',
   templateUrl: './red-dice.component.html'
 })
-export class RedDiceComponent {
+export class RedDiceComponent implements OnInit {
+
+  @Input() private rollRequested: EventEmitter<boolean> = new EventEmitter();
 
   readonly diceSides = [
     { red: 3, blue: 1, green: 2 },
@@ -16,5 +18,15 @@ export class RedDiceComponent {
     { red: 6, blue: 3, green: 1 }
   ];
 
-  readonly outcome = this.diceSides[randomIntFromInterval(0, 5)];
+  outcome = this.roll();
+
+  ngOnInit() {
+    if (this.rollRequested) {
+      this.rollRequested.subscribe(() => this.outcome = this.roll());
+    }
+  }
+
+  roll() {
+    return this.diceSides[randomIntFromInterval(0, 5)];
+  }
 }
