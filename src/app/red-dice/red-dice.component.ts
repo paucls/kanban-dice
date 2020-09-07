@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { randomIntFromInterval } from '../core/random';
 
 @Component({
-  selector: 'app-dice',
-  templateUrl: './dice.component.html'
+  selector: 'app-red-dice',
+  templateUrl: './red-dice.component.html'
 })
-export class DiceComponent {
+export class RedDiceComponent {
 
   readonly diceSides = [
     { red: 3, blue: 1, green: 2 },
