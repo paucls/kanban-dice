@@ -64,8 +64,8 @@
 <div class="content" role="main">
 
   <div class="dices-group">
-    <app-green-dice [rollRequested]="rollRequested"></app-green-dice>
-    <app-green-dice [rollRequested]="rollRequested"></app-green-dice>
+    <app-green-dice *ngFor="let i of greenDiceCount"
+                    [rollRequested]="rollRequested"></app-green-dice>
   </div>
 
   <div class="dices-group">
@@ -84,5 +84,7 @@
   </div>
 
   <button (click)="roll()">Roll</button>
+
+  <button (click)="addGreenDice()" class="add-dice-button">Add green dice</button>
 </div>
 
